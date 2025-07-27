@@ -1,6 +1,7 @@
 // components/ChatMessage.tsx
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
+import React from 'react';
 
 type Props = {
   message: string;
@@ -61,7 +62,7 @@ const ChatMessage = ({ message, sender }: Props) => {
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className={`${baseClasses} ${bubbleStyle}`}
+      {...({ className: `${baseClasses} ${bubbleStyle}` } as HTMLMotionProps<"div">)}
     >
       {message}
     </motion.div>
