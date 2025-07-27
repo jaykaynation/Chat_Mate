@@ -1,0 +1,69 @@
+/* styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset html and body margins, padding, and prevent horizontal and vertical scroll */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  transition: background-color 1s ease, color 1s ease;
+}
+
+/* Make sure __next fills viewport height and uses flex */
+#__next {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollbar styling (optional) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.gray.400');
+  border-radius: 4px;
+}
+
+/* Smooth transitions */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Chat bubble radius helpers */
+.bubble-left {
+  border-radius: 1rem 1rem 1rem 0.25rem;
+}
+
+.bubble-right {
+  border-radius: 1rem 1rem 0.25rem 1rem;
+}
+
+/* ----------------------------- */
+/* Variant-Based Theme Styles    */
+/* ----------------------------- */
+
+html.variant-default {
+  background-color: #f9fafb;
+}
+
+html.variant-messenger {
+  background: linear-gradient(to bottom right, #0078FF, #00C6FF);
+  color: white;
+}
+
+html.variant-terminal {
+  background-color: #000;
+  color: #33FF33;
+  font-family: monospace;
+}
+
+html.variant-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #111;
+}
