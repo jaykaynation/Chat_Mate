@@ -1,3 +1,4 @@
+// components/Layout.tsx
 import React from 'react';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -49,7 +50,7 @@ const Layout: React.FC<Props> = ({ children }) => {
 
       <main className="flex-1 overflow-y-auto pt-[56px]">
         <AnimatePresence mode="wait" initial={false}>
-          <motion.div<HTMLDivElement>
+          <motion.div
             key={router.route}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
