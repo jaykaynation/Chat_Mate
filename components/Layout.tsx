@@ -49,7 +49,7 @@ const Layout: React.FC<Props> = ({ children }) => {
 
       <main className="flex-1 overflow-y-auto pt-[56px]">
         <AnimatePresence mode="wait" initial={false}>
-          <motion.div
+          <motion.div<HTMLDivElement>
             key={router.route}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
