@@ -2,7 +2,9 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
-const credentials = {
+type UserRole = 'guest' | 'developer' | 'recruiter';
+
+const credentials: Record<UserRole, { username: string; password: string }> = {
   guest: { username: 'guest', password: 'guest123' },
   developer: { username: 'dev', password: 'dev123' },
   recruiter: { username: 'recruiter', password: 'hireme' },
@@ -20,7 +22,7 @@ const Login2 = () => {
   const [roleValidated, setRoleValidated] = useState(false);
 
   useEffect(() => {
-    if (typeof role === 'string' && role in credentials) {
+    if (typeof role === 'string' && (role as UserRole) in credentials) {
       setError('');
       setRoleValidated(true);
     } else if (role !== undefined) {
@@ -31,9 +33,9 @@ const Login2 = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!role || typeof role !== 'string') return;
+    if (!role || typeof role !== 'string' || !(role in credentials)) return;
 
-    const valid = credentials[role];
+    const valid = credentials[role as UserRole];
     setError('');
     setLoading(true);
 

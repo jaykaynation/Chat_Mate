@@ -2,12 +2,7 @@
 import { motion } from 'framer-motion';
 import { User } from 'lucide-react';
 import React from 'react';
-
-type AuthProfile = {
-  name: string;
-  role: 'Guest' | 'Developer' | 'Recruiter';
-  avatar?: string;
-};
+import { AuthProfile } from '@/types';
 
 type Props = {
   profile: AuthProfile;

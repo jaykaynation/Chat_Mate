@@ -1,6 +1,8 @@
 import { themes } from '../constants/themes';
 import { useTheme } from '../context/ThemeContext';
 
+type Variant = 'default' | 'messenger' | 'terminal' | 'ios' | 'minimalist';
+
 export const ThemePreview = () => {
   const { setVariant, theme } = useTheme();
 
@@ -15,9 +17,6 @@ export const ThemePreview = () => {
         return theme === 'dark'
           ? 'bg-black text-green-400 hover:bg-gray-900'
           : 'bg-green-100 text-green-900 hover:bg-green-200';
-
-      case 'glass':
-        return 'bg-white/10 backdrop-blur-md border border-white/10 text-white';
 
       case 'ios':
         return theme === 'dark'
@@ -41,7 +40,7 @@ export const ThemePreview = () => {
       {themes.map((themeOption) => (
         <div
           key={themeOption.name}
-          onClick={() => setVariant(themeOption.name)}
+          onClick={() => setVariant(themeOption.name as Variant)}
           className={`p-4 rounded cursor-pointer transition duration-200 ${getCardStyle(
             themeOption.name
           )}`}

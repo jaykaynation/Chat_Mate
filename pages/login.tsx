@@ -2,8 +2,9 @@
 import React from 'react';
 import AuthCard from '@/components/AuthCard'; // ✅ Make sure this file exists
 import { useRouter } from 'next/router';
+import { AuthProfile } from '@/types';
 
-const profiles = [
+const profiles: AuthProfile[] = [
   { name: 'Guest', role: 'Guest' },
   { name: 'Dev Ninja', role: 'Developer' },
   { name: 'Recruiter Jane', role: 'Recruiter' },
@@ -12,7 +13,7 @@ const profiles = [
 const LoginPage = () => {
   const router = useRouter();
 
-  const handleSelect = (profile: any) => {
+  const handleSelect = (profile: AuthProfile) => {
     sessionStorage.setItem('chatmate:user', JSON.stringify(profile));
 
     // Redirect to /login2 with selected role in query string

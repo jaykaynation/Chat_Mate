@@ -6,3 +6,9 @@ export type BotPersona = {
   avatar: string;
   colorTheme: string;
 };
+
+export type AuthProfile = {
+  name: string;
+  role: 'Guest' | 'Developer' | 'Recruiter';
+  avatar?: string;
+};
