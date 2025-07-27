@@ -1,4 +1,5 @@
-// navbar.tsx
+// components/Navbar.tsx
+import React from 'react'; // ✅ Add this line
 import Link from 'next/link';
 import { useTheme } from '../context/ThemeContext';
 import {
@@ -24,7 +25,7 @@ const NAVBAR_HEIGHT = 56;
 export const Navbar = () => {
   const { theme, toggleTheme, mounted } = useTheme();
   const { user, logout } = useAuth();
-  const [icon, setIcon] = useState<JSX.Element | null>(null);
+  const [icon, setIcon] = useState<React.ReactElement | null>(null); // Using React.ReactElement instead of JSX.Element
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -35,7 +36,6 @@ export const Navbar = () => {
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const handleLinkClick = () => setMenuOpen(false);
 
-  // Close mobile menu on outside click
   useEffect(() => {
     if (!menuOpen) return;
 
@@ -58,7 +58,6 @@ export const Navbar = () => {
           ChatMate
         </Link>
 
-        {/* Desktop nav */}
         <div className="hidden md:flex space-x-4 items-center h-full">
           <Link href="/" className="flex items-center gap-1 px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition">
             <Home size={18} /> Home
@@ -107,7 +106,6 @@ export const Navbar = () => {
           )}
         </div>
 
-        {/* Mobile menu button */}
         <button
           onClick={toggleMenu}
           aria-label="Toggle Menu"
@@ -117,16 +115,17 @@ export const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile dropdown */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             ref={menuRef}
-            className="fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 shadow-lg z-50 p-6 flex flex-col space-y-4"
-            initial={{ x: '100%', opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: '100%', opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            {...({
+              initial: { x: '100%', opacity: 0 },
+              animate: { x: 0, opacity: 1 },
+              exit: { x: '100%', opacity: 0 },
+              transition: { type: 'spring', stiffness: 300, damping: 30 },
+              className: "fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 shadow-lg z-50 p-6 flex flex-col space-y-4"
+            } as any)}
           >
             <button
               onClick={toggleMenu}

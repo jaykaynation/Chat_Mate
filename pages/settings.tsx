@@ -1,4 +1,5 @@
 // pages/settings.tsx
+import React from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { useEffect, useState } from 'react';
 import { Gauge, Moon, Sun } from 'lucide-react';
@@ -12,7 +13,7 @@ export default function SettingsPage() {
     mounted,
   } = useTheme();
 
-  const [icon, setIcon] = useState<JSX.Element | null>(null);
+  const [icon, setIcon] = useState<React.ReactElement | null>(null);
 
   useEffect(() => {
     setIcon(theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />);
@@ -27,7 +28,7 @@ export default function SettingsPage() {
         <div className="flex items-center justify-between">
           <span className="flex items-center gap-2">
             {icon}
-            Dark Mode
+            {theme === 'dark' ? 'Dark Mode' : 'Light Mode'}
           </span>
           <button
             onClick={toggleTheme}
