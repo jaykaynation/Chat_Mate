@@ -132,3 +132,14 @@ components/NavbarWrapper.tsx
 components/PersonaSelector.tsx
 
 components/ThemePreview.tsx
+
+
+## 📄 License
+
+MIT
+
+---
+
+## 🙋 Author
+
+Built with ❤️ by Kolade Oyeyipo
