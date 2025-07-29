@@ -1,4 +1,4 @@
-# ChatMate (Enhanced)
+# ChatMate
 
 Professional-grade front-end chatbot UI using Next.js, Tailwind, TypeScript, Zustand, and Framer Motion.
 
@@ -15,12 +15,14 @@ Professional-grade front-end chatbot UI using Next.js, Tailwind, TypeScript, Zus
 - 🌍 **i18n & Accessibility** – ARIA roles, keyboard nav
 - 🔒 **Simulated Auth Flows** – guest/dev/recruiter logins
 - 🧪 **Testing Ready** – Jest + Testing Library
-- 📊 **Analytics Hooks** – message count, error logging
 
 ---
 
 ## Pages
-- `/` Chat UI
+- `/` Home Page
+- `/login`
+- `/login2`
+- `/Dashboard`
 - `/about`
 - `/settings`
 - `/themes`
@@ -31,21 +33,21 @@ Professional-grade front-end chatbot UI using Next.js, Tailwind, TypeScript, Zus
 ## 📁 Project Structure
 /
 ├── components/ # UI Components (Chat, Layout, etc.)
+├── constants/ # Personas and theme constants
 ├── context/ # Theme + Persona Context
 ├── hooks/ # Custom React Hooks
 ├── pages/ # Next.js Routing Pages
-├── public/ # Assets
+├── store/ # Zustand Global Store
 ├── styles/ # Tailwind Setup
 ├── utils/ # Fake AI logic, theme utils
-├── store/ # Zustand Global Store
 └── tests/ # Component + utility tests
 
 ---
 
 ## 🛠️ Setup
 ```bash
-git clone https://github.com/yourname/chatmate.git
-cd chatmate
+git clone https://github.com/jaykaynation/ChatMate.git
+cd ChatMate
 npm install
 npm run dev
 
@@ -53,8 +55,6 @@ npm run dev
 
 🧠 Simulated Personas
 Each bot has:
-
-Avatar
 
 Speaking style (e.g. poetic, casual, techy)
 
@@ -67,13 +67,13 @@ Custom reply logic
 🌈 Themes
 Supports:
 
-Messenger Blue
+Default
 
-Glassmorphic
+Messenger Blue
 
 Terminal Green
 
-WhatsApp Inspired
+iOS Style
 
 Minimal Gray
 
@@ -108,26 +108,27 @@ Stores avatar and name in session.
 ✅ Core Entry Points
 pages/index.tsx ← usually renders your layout and key components
 
-pages/login.tsx ← where AuthCard is used
+pages/login2.tsx ← where AuthCard is used
 
 pages/_app.tsx ← custom app wrapper that can affect routing
 
 pages/_document.tsx ← if customized
 
 ✅ Components
-components/AuthCard.tsx ← where the invalid element might come from
+components/AuthCard.tsx
+
+components/ChatInput.tsx
+
+components/ChatMessage.tsx
+
+components/ChatMessageList.tsx
 
 components/Layout.tsx
 
 components/Navbar.tsx
 
-components/ChatMessage.tsx
+components/NavbarWrapper.tsx
 
-components/ChatInput.tsx
+components/PersonaSelector.tsx
 
-components/ChatMessageList.tsx
-
-✅ Shared Logic
-utils/ imports used in index.tsx or login.tsx
-
-context/ or hooks/ if any custom hooks are being used
+components/ThemePreview.tsx
